@@ -79,9 +79,6 @@ export function ShareBar({ data }: { data: AlmanacData }) {
           {saving ? 'Rendering…' : 'Share story card'}
         </button>
       </div>
-      <p className="mt-2.5 text-center text-[9px] tracking-[0.16em] text-paper/60 uppercase">
-        1080 × 1920 — made for WhatsApp status &amp; Instagram stories
-      </p>
       {error && (
         <p className="mt-2 text-center text-xs text-paper/80" role="alert">
           {error}
