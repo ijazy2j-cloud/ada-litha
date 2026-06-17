@@ -1,4 +1,6 @@
 import type { AstroChart } from '../../lib/astrology';
+import { getTodayTara } from '../../lib/tara';
+import { TARA_QUALITY_LABEL } from '../../data/tara';
 import { weekdayColour } from '../../data/grahas';
 import { NAKSHATRA_TRAITS } from '../../data/nakshatraTraits';
 import { Divider } from '../Divider';
@@ -32,6 +34,15 @@ export function AstrologyResult({ chart, weekday, onEdit, onShare }: AstrologyRe
   const star = chart.nakshatra;
   const matches = star.luckyColour.en === day.en;
   const traits = NAKSHATRA_TRAITS[star.num] ?? [];
+
+  const { tara } = getTodayTara(star.num);
+  const quality = TARA_QUALITY_LABEL[tara.quality];
+  const qualityClass =
+    tara.quality === 'favourable'
+      ? 'text-moss'
+      : tara.quality === 'less-favourable'
+        ? 'text-rahu'
+        : 'text-paper/75';
 
   return (
     <section aria-labelledby="astro-result-heading">
@@ -105,6 +116,30 @@ export function AstrologyResult({ chart, weekday, onEdit, onShare }: AstrologyRe
           <span className="block h-1.5 w-1.5 rotate-45 bg-gold" aria-hidden="true" />
         </p>
       )}
+
+      <Divider className="my-7" />
+
+      {/* today's Tara Bala — standing only, no instructions */}
+      <div className="text-center">
+        <p className="font-display text-[9px] font-semibold tracking-[0.2em] text-saffron uppercase">
+          අද තාරා බල · Today's Tara Bala
+        </p>
+        <p className="mt-2.5 font-sinhala text-[20px] leading-tight font-medium text-paper">
+          {tara.si}
+        </p>
+        <p className="mt-0.5 text-[12px] text-paper/70">
+          <span className="font-display tracking-[0.06em]">{tara.en}</span> ·{' '}
+          <span className={qualityClass}>
+            <span className="font-sinhala">{quality.si}</span> · {quality.en}
+          </span>
+        </p>
+        <p className="mx-auto mt-2 max-w-[34ch] text-[12px] leading-snug text-paper/65">
+          <span className="font-sinhala">{tara.meaningSi}</span> · {tara.meaningEn}
+        </p>
+        <p className="mt-2 text-[10px] text-paper/50">
+          Traditional standing for today — for interest, not advice.
+        </p>
+      </div>
 
       <Divider className="my-7" />
 

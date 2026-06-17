@@ -21,6 +21,7 @@ import type { AlmanacData } from './lib/almanac';
 import { Divider } from './components/Divider';
 import { Moon } from './components/Moon';
 import { RahuPanel } from './components/RahuPanel';
+import { AuspiciousPanel } from './components/AuspiciousPanel';
 import { ShareBar } from './components/ShareBar';
 import { GathaPanel } from './components/GathaPanel';
 import { PoyaObservancePanel } from './components/PoyaObservancePanel';
@@ -145,6 +146,15 @@ export default function App() {
       <Divider className="my-9" />
 
       <RahuPanel window={rahu} sun={sun} minutesOfDay={sl.minutesOfDay} cityEn={city.en} />
+
+      <Divider className="my-9" />
+
+      <AuspiciousPanel
+        weekday={sl.weekday}
+        sun={sun}
+        minutesOfDay={sl.minutesOfDay}
+        cityEn={city.en}
+      />
 
       <Divider className="my-9" />
 
