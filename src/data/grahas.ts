@@ -23,18 +23,20 @@ export interface Graha {
   si: string;
   colourEn: string;
   colourSi: string;
+  /** Muted hex for a small swatch, tuned to sit on the dark maroon sheet. */
+  colourHex: string;
 }
 
 export const GRAHAS: Record<GrahaId, Graha> = {
-  sun: { id: 'sun', en: 'Sun', si: 'රවි', colourEn: 'copper red', colourSi: 'තඹ රතු' },
-  moon: { id: 'moon', en: 'Moon', si: 'සඳු', colourEn: 'white', colourSi: 'සුදු' },
-  mars: { id: 'mars', en: 'Mars', si: 'අඟහරු', colourEn: 'red', colourSi: 'රතු' },
-  mercury: { id: 'mercury', en: 'Mercury', si: 'බුධ', colourEn: 'green', colourSi: 'කොළ' },
-  jupiter: { id: 'jupiter', en: 'Jupiter', si: 'ගුරු', colourEn: 'yellow', colourSi: 'කහ' },
-  venus: { id: 'venus', en: 'Venus', si: 'සිකුරු', colourEn: 'white', colourSi: 'සුදු' },
-  saturn: { id: 'saturn', en: 'Saturn', si: 'සෙනසුරු', colourEn: 'dark blue', colourSi: 'තද නිල්' },
-  rahu: { id: 'rahu', en: 'Rahu', si: 'රාහු', colourEn: 'smoke grey', colourSi: 'දුම් අළු' },
-  ketu: { id: 'ketu', en: 'Ketu', si: 'කේතු', colourEn: 'brown', colourSi: 'දුඹුරු' },
+  sun: { id: 'sun', en: 'Sun', si: 'රවි', colourEn: 'copper red', colourSi: 'තඹ රතු', colourHex: '#C0552B' },
+  moon: { id: 'moon', en: 'Moon', si: 'සඳු', colourEn: 'white', colourSi: 'සුදු', colourHex: '#ECE3CC' },
+  mars: { id: 'mars', en: 'Mars', si: 'අඟහරු', colourEn: 'red', colourSi: 'රතු', colourHex: '#B23A2E' },
+  mercury: { id: 'mercury', en: 'Mercury', si: 'බුධ', colourEn: 'green', colourSi: 'කොළ', colourHex: '#4E8A57' },
+  jupiter: { id: 'jupiter', en: 'Jupiter', si: 'ගුරු', colourEn: 'yellow', colourSi: 'කහ', colourHex: '#D6A82E' },
+  venus: { id: 'venus', en: 'Venus', si: 'සිකුරු', colourEn: 'white', colourSi: 'සුදු', colourHex: '#E6DCC4' },
+  saturn: { id: 'saturn', en: 'Saturn', si: 'සෙනසුරු', colourEn: 'dark blue', colourSi: 'තද නිල්', colourHex: '#3A4670' },
+  rahu: { id: 'rahu', en: 'Rahu', si: 'රාහු', colourEn: 'smoke grey', colourSi: 'දුම් අළු', colourHex: '#6E6A66' },
+  ketu: { id: 'ketu', en: 'Ketu', si: 'කේතු', colourEn: 'brown', colourSi: 'දුඹුරු', colourHex: '#6E4A33' },
 };
 
 // Planetary ruler of each weekday (0 = Sunday). The "day colour" is this

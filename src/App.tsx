@@ -24,6 +24,7 @@ import { RahuPanel } from './components/RahuPanel';
 import { ShareBar } from './components/ShareBar';
 import { GathaPanel } from './components/GathaPanel';
 import { PoyaObservancePanel } from './components/PoyaObservancePanel';
+import { AstrologyPanel } from './components/astrology/AstrologyPanel';
 import { Tabs, type TabDef } from './components/Tabs';
 
 export default function App() {
@@ -245,23 +246,10 @@ export default function App() {
     </div>
   );
 
-  // ── ජ්‍යෝතිෂ්‍ය · Astrology (placeholder, built next) ────────────────────
+  // ── ජ්‍යෝතිෂ්‍ය · Astrology ───────────────────────────────────────────
   const astrologyPanel = (
-    <div className={`${panelPad} text-center`}>
-      <div className="py-16">
-        <span
-          className="mx-auto block h-2.5 w-2.5 rotate-45 bg-gold/70"
-          aria-hidden="true"
-        />
-        <p className="mt-6 font-sinhala text-[20px] font-medium text-paper">ජ්‍යෝතිෂ්‍ය</p>
-        <p className="mt-2 font-display text-[9px] font-semibold tracking-[0.3em] text-saffron uppercase">
-          Astrology
-        </p>
-        <p className="mx-auto mt-5 max-w-[30ch] text-[13px] leading-relaxed text-paper/60">
-          <span className="font-sinhala">ඉක්මනින්</span> — auspicious times and traditional
-          guidance, arriving soon.
-        </p>
-      </div>
+    <div className={panelPad}>
+      <AstrologyPanel data={data} />
     </div>
   );
 
