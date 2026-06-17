@@ -12,7 +12,7 @@ The interface is organised into three tabs, with the litha sheet first:
 
 - **අද · Today** — the litha sheet.
 - **දහම් · Dhamma** — the daily gatha, plus the observance block on Poya days.
-- **ජ්‍යෝතිඍ · Astrology** — placeholder for now, built next.
+- **ජ්‍යෝතිෂ්‍ය · Astrology** — placeholder for now, built next.
 
 ## Features
 

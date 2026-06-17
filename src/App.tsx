@@ -245,7 +245,7 @@ export default function App() {
     </div>
   );
 
-  // ── ජ්‍යෝතිඍ · Astrology (placeholder, built next) ────────────────────
+  // ── ජ්‍යෝතිෂ්‍ය · Astrology (placeholder, built next) ────────────────────
   const astrologyPanel = (
     <div className={`${panelPad} text-center`}>
       <div className="py-16">
@@ -253,7 +253,7 @@ export default function App() {
           className="mx-auto block h-2.5 w-2.5 rotate-45 bg-gold/70"
           aria-hidden="true"
         />
-        <p className="mt-6 font-sinhala text-[20px] font-medium text-paper">ජ්‍යෝතිඍ</p>
+        <p className="mt-6 font-sinhala text-[20px] font-medium text-paper">ජ්‍යෝතිෂ්‍ය</p>
         <p className="mt-2 font-display text-[9px] font-semibold tracking-[0.3em] text-saffron uppercase">
           Astrology
         </p>
@@ -268,7 +268,7 @@ export default function App() {
   const tabs: TabDef[] = [
     { id: 'today', labelSi: 'අද', labelEn: 'Today', panel: todayPanel },
     { id: 'dhamma', labelSi: 'දහම්', labelEn: 'Dhamma', panel: dhammaPanel },
-    { id: 'astrology', labelSi: 'ජ්‍යෝතිඍ', labelEn: 'Astrology', panel: astrologyPanel },
+    { id: 'astrology', labelSi: 'ජ්‍යෝතිෂ්‍ය', labelEn: 'Astrology', panel: astrologyPanel },
   ];
 
   return (
