@@ -1,24 +1,7 @@
-import { defineConfig, type Connect } from 'vite';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { VitePWA } from 'vite-plugin-pwa';
-
-// Mirrors the Netlify function for local dev and `vite preview`.
-const newsMiddleware: Connect.NextHandleFunction = async (_req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  try {
-    const { fetchNews } = await import('./server/news');
-    const { items, cached } = await fetchNews();
-    res.end(JSON.stringify({ headlines: items, cached }));
-  } catch (err) {
-    res.statusCode = 502;
-    res.end(
-      JSON.stringify({
-        error: err instanceof Error ? err.message : 'Could not fetch headlines',
-      }),
-    );
-  }
-};
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -65,22 +48,8 @@ export default defineConfig({
               cacheableResponse: { statuses: [0, 200] },
             },
           },
-          {
-            // News must never be served stale from the SW — the function caches.
-            urlPattern: /\/api\/news/,
-            handler: 'NetworkOnly',
-          },
         ],
       },
     }),
-    {
-      name: 'dev-news-api',
-      configureServer(server) {
-        server.middlewares.use('/api/news', newsMiddleware);
-      },
-      configurePreviewServer(server) {
-        server.middlewares.use('/api/news', newsMiddleware);
-      },
-    },
   ],
 });
