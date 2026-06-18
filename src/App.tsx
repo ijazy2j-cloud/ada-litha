@@ -1,5 +1,6 @@
 import { useSLClock } from './hooks/useSLClock';
 import { useCity } from './hooks/useCity';
+import { useBirthChart } from './hooks/useBirthChart';
 import { CITIES } from './data/cities';
 import {
   MONTHS_EN,
@@ -26,11 +27,14 @@ import { ShareBar } from './components/ShareBar';
 import { GathaPanel } from './components/GathaPanel';
 import { PoyaObservancePanel } from './components/PoyaObservancePanel';
 import { AstrologyPanel } from './components/astrology/AstrologyPanel';
+import { ForTodayPanel } from './components/ForTodayPanel';
+import { DhammaWordPanel } from './components/DhammaWordPanel';
 import { Tabs, type TabDef } from './components/Tabs';
 
 export default function App() {
   const sl = useSLClock();
   const [city, setCity] = useCity();
+  const birth = useBirthChart();
   const sun = getSunTimes(sl.dayOfYear, sl.year, city.lat, city.lon);
   const rahu = getRahuKalaya(sl.weekday, sun.sunrise, sun.sunset);
   // Phase is a property of the instant, not the calendar day — derive the
@@ -158,6 +162,10 @@ export default function App() {
 
       <Divider className="my-9" />
 
+      <ForTodayPanel weekday={sl.weekday} chart={birth.chart} />
+
+      <Divider className="my-9" />
+
       {/* ── sun ── */}
       <section aria-label="Sun times">
         <div className="grid grid-cols-3 text-center">
@@ -247,6 +255,11 @@ export default function App() {
   const dhammaPanel = (
     <div className={panelPad}>
       <GathaPanel data={data} />
+
+      <Divider className="my-9" />
+
+      <DhammaWordPanel dayOfYear={sl.dayOfYear} />
+
       {poya.isPoyaToday && poya.today && (
         <>
           <Divider className="my-9" />
@@ -259,7 +272,7 @@ export default function App() {
   // ── ජ්‍යෝතිෂ්‍ය · Astrology ───────────────────────────────────────────
   const astrologyPanel = (
     <div className={panelPad}>
-      <AstrologyPanel data={data} />
+      <AstrologyPanel data={data} chart={birth.chart} submit={birth.submit} />
     </div>
   );
 

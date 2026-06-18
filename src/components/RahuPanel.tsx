@@ -1,6 +1,8 @@
 import type { SunTimes } from '../lib/solar';
 import { getRahuStatus, type RahuWindow } from '../lib/rahu';
 import { formatCountdown, formatTime } from '../lib/format';
+import { GLOSSARY } from '../data/glossary';
+import { InfoHint } from './InfoHint';
 
 interface RahuPanelProps {
   window: RahuWindow;
@@ -17,8 +19,9 @@ export function RahuPanel({ window, sun, minutesOfDay, cityEn }: RahuPanelProps)
   return (
     <section aria-labelledby="rahu-heading">
       <div className="flex items-baseline justify-between">
-        <h2 id="rahu-heading" className="font-sinhala text-[15px] font-medium text-paper">
+        <h2 id="rahu-heading" className="flex items-center gap-1.5 font-sinhala text-[15px] font-medium text-paper">
           රාහු කාලය
+          <InfoHint entry={GLOSSARY.rahu} label="Rahu Kalaya" align="left" />
         </h2>
         <p className="font-display text-[9px] font-semibold tracking-[0.24em] text-saffron uppercase">
           Rahu Kalaya · {cityEn}

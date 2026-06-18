@@ -1,15 +1,19 @@
 import { useRef, useState } from 'react';
 import type { AlmanacData } from '../../lib/almanac';
 import { shareStoryCard } from '../../lib/shareStory';
-import { useBirthChart } from '../../hooks/useBirthChart';
-import type { BirthInput } from '../../lib/astrology';
+import type { AstroChart, BirthInput } from '../../lib/astrology';
 import { AstrologyForm } from './AstrologyForm';
 import { AstrologyResult } from './AstrologyResult';
 import { StoryCardAstrology } from '../story/StoryCardAstrology';
 
+interface AstrologyPanelProps {
+  data: AlmanacData;
+  chart: AstroChart | null;
+  submit: (input: BirthInput) => void;
+}
+
 /** Astrology tab: a one-time birth form, then the stored star/colour card. */
-export function AstrologyPanel({ data }: { data: AlmanacData }) {
-  const { chart, submit } = useBirthChart();
+export function AstrologyPanel({ data, chart, submit }: AstrologyPanelProps) {
   const [editing, setEditing] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 

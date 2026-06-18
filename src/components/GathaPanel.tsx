@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import type { AlmanacData } from '../lib/almanac';
 import { shareStoryCard } from '../lib/shareStory';
+import { reflectionForGatha } from '../data/gathaReflections';
 import { Collapsible } from './Collapsible';
 import { ShareIconButton } from './ShareIconButton';
 import { StoryCardGatha } from './story/StoryCardGatha';
@@ -8,6 +9,7 @@ import { StoryCardGatha } from './story/StoryCardGatha';
 /** Daily Dhammapada verse: Pali small caps over Sinhala; English on tap. */
 export function GathaPanel({ data }: { data: AlmanacData }) {
   const { gatha } = data;
+  const reflection = reflectionForGatha(gatha.n);
   const cardRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -52,6 +54,19 @@ export function GathaPanel({ data }: { data: AlmanacData }) {
           </p>
         }
       />
+
+      {reflection && (
+        <div className="mt-4 border-l-2 border-paper/15 pl-3.5">
+          <p className="font-display text-[9px] font-semibold tracking-[0.24em] text-saffron uppercase">
+            අදහස · Reflection
+          </p>
+          <p className="mt-1.5 font-sinhala text-[14px] leading-relaxed text-paper/90">
+            {reflection.si}
+          </p>
+          <p className="mt-1 text-[12px] leading-snug text-paper/60">{reflection.en}</p>
+        </div>
+      )}
+
       <StoryCardGatha ref={cardRef} data={data} />
     </>
   );

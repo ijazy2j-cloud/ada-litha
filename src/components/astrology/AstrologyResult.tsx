@@ -3,8 +3,10 @@ import { getTodayTara } from '../../lib/tara';
 import { TARA_QUALITY_LABEL } from '../../data/tara';
 import { weekdayColour } from '../../data/grahas';
 import { NAKSHATRA_TRAITS } from '../../data/nakshatraTraits';
+import { GLOSSARY } from '../../data/glossary';
 import { Divider } from '../Divider';
 import { ShareIconButton } from '../ShareIconButton';
+import { InfoHint } from '../InfoHint';
 
 function ColourChip({ hex, en, si }: { hex: string; en: string; si: string }) {
   return (
@@ -59,8 +61,9 @@ export function AstrologyResult({ chart, weekday, onEdit, onShare }: AstrologyRe
       {/* nakshatra + rashi */}
       <div className="mt-5 grid grid-cols-2 gap-4 text-center">
         <div>
-          <p className="font-display text-[9px] font-semibold tracking-[0.2em] text-saffron uppercase">
+          <p className="flex items-center justify-center gap-1.5 font-display text-[9px] font-semibold tracking-[0.2em] text-saffron uppercase">
             නැකත · Birth star
+            <InfoHint entry={GLOSSARY.birthStar} label="birth star" align="left" />
           </p>
           <p className="mt-2 font-sinhala text-[22px] leading-tight font-medium text-paper">
             {star.si}
@@ -70,8 +73,9 @@ export function AstrologyResult({ chart, weekday, onEdit, onShare }: AstrologyRe
           </p>
         </div>
         <div>
-          <p className="font-display text-[9px] font-semibold tracking-[0.2em] text-saffron uppercase">
+          <p className="flex items-center justify-center gap-1.5 font-display text-[9px] font-semibold tracking-[0.2em] text-saffron uppercase">
             රාශිය · Moon sign
+            <InfoHint entry={GLOSSARY.moonSign} label="moon sign" align="right" />
           </p>
           <p className="mt-2 font-sinhala text-[22px] leading-tight font-medium text-paper">
             {chart.rashi.si}
@@ -87,8 +91,9 @@ export function AstrologyResult({ chart, weekday, onEdit, onShare }: AstrologyRe
       {/* colours */}
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <p className="font-display text-[9px] font-semibold tracking-[0.2em] text-saffron uppercase">
+          <p className="flex items-center gap-1.5 font-display text-[9px] font-semibold tracking-[0.2em] text-saffron uppercase">
             ඔබේ වර්ණය අද · Your colour
+            <InfoHint entry={GLOSSARY.luckyColour} label="lucky colour" align="left" />
           </p>
           <div className="mt-2.5">
             <ColourChip
@@ -121,8 +126,9 @@ export function AstrologyResult({ chart, weekday, onEdit, onShare }: AstrologyRe
 
       {/* today's Tara Bala — standing only, no instructions */}
       <div className="text-center">
-        <p className="font-display text-[9px] font-semibold tracking-[0.2em] text-saffron uppercase">
+        <p className="flex items-center justify-center gap-1.5 font-display text-[9px] font-semibold tracking-[0.2em] text-saffron uppercase">
           අද තාරා බල · Today's Tara Bala
+          <InfoHint entry={GLOSSARY.taraBala} label="Tara Bala" align="center" />
         </p>
         <p className="mt-2.5 font-sinhala text-[20px] leading-tight font-medium text-paper">
           {tara.si}

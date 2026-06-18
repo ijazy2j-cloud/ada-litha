@@ -1,6 +1,15 @@
 import type { SunTimes } from '../lib/solar';
 import { getDayPeriods, periodStatus } from '../lib/auspicious';
 import { formatCountdown, formatTime, formatTimeRange } from '../lib/format';
+import { GLOSSARY, type GlossaryKey } from '../data/glossary';
+import { InfoHint } from './InfoHint';
+
+// The listed periods map 1:1 onto a plain-language glossary entry.
+const PERIOD_GLOSSARY: Record<string, GlossaryKey> = {
+  yamaganda: 'yamaganda',
+  gulika: 'gulika',
+  abhijit: 'abhijit',
+};
 
 interface AuspiciousPanelProps {
   weekday: number;
@@ -77,6 +86,15 @@ export function AuspiciousPanel({ weekday, sun, minutesOfDay, cityEn }: Auspicio
                   <span className="ml-2 font-display text-[9px] tracking-[0.14em] text-paper/55 uppercase">
                     {p.labelEn}
                   </span>
+                  {PERIOD_GLOSSARY[p.id] && (
+                    <span className="ml-1.5">
+                      <InfoHint
+                        entry={GLOSSARY[PERIOD_GLOSSARY[p.id]]}
+                        label={p.labelEn}
+                        align="left"
+                      />
+                    </span>
+                  )}
                 </span>
               </span>
               <span className="text-right">

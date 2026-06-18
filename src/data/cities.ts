@@ -8,6 +8,7 @@ export interface City {
 
 export const CITIES: City[] = [
   { id: 'colombo', en: 'Colombo', si: 'කොළඹ', lat: 6.9271, lon: 79.8612 },
+  { id: 'gampaha', en: 'Gampaha', si: 'ගම්පහ', lat: 7.0917, lon: 79.9999 },
   { id: 'kandy', en: 'Kandy', si: 'මහනුවර', lat: 7.2906, lon: 80.6337 },
   { id: 'galle', en: 'Galle', si: 'ගාල්ල', lat: 6.0535, lon: 80.221 },
   { id: 'jaffna', en: 'Jaffna', si: 'යාපනය', lat: 9.6615, lon: 80.0255 },
